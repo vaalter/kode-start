@@ -56,8 +56,10 @@ Para rodar este projeto em sua máquina local, siga os passos abaixo:
 **(Aqui você pode inserir os GIFs ou vídeos do seu projeto, demonstrando as funcionalidades.)**
 
 * **Listagem de Personagens e Rolagem Infinita**
-    <img width="221" height="487" alt="Rolagem Infinita" src="https://github.com/user-attachments/assets/16d5b919-3238-42f7-aa46-b9bd6b1226b5" />
+
+    ![Rolagem Infinita](https://github.com/user-attachments/assets/6e44268e-cf03-40b8-ad37-b17c0acedd8e)
 
 
 * **Detalhes do Personagem**
+
     <img width="351" height="765" alt="image" src="https://github.com/user-attachments/assets/efeb886f-93bb-43b0-b5b6-91f679fceebc" />
