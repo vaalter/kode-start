@@ -1,8 +1,10 @@
-# Desafio Kobe Apps - Aplicativo Rick and Morty API
+# Desafio Kobe Apps - Aplicativo Rick and Morty API 
 
-![Capa do Projeto](https://i.imgur.com/K75g1iO.png) 
+Este repositório contém a solução desenvolvida como parte obrigatória na participação do 3º Kode Start da Kobe Apps.
 
-Este repositório contém a solução desenvolvida para o desafio de construir um aplicativo em Flutter para listar e exibir detalhes de personagens da API de Rick and Morty.
+O objetivo foi construir um aplicativo em Flutter para listar e exibir detalhes dos personagens do desenhor Rick and Morty através da API de Rick and Morty (https://rickandmortyapi.com/).
+
+A equipe da Kobe disponibilizou o designer do aplicativo através do Figma.
 
 ---
 
