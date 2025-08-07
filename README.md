@@ -1,337 +1,63 @@
-# Kode Start by Kobe
+# Desafio Kobe Apps - Aplicativo Rick and Morty API
 
-Neste repositório se encontram os aplicativos desenvolvidos durante as aulas, outros projetos desenvolvidos ao longo do programa e, também, documentações
+![Capa do Projeto](https://i.imgur.com/K75g1iO.png) 
 
-## Links úteis
-- Dart Tour: https://dart.dev/guides/language/language-tour
-- Projects: https://github.com/kobeapps/kode-start/tree/main/projects
+Este repositório contém a solução desenvolvida para o desafio de construir um aplicativo em Flutter para listar e exibir detalhes de personagens da API de Rick and Morty.
 
-## Dart
-Dart é uma linguagem de programação lançada primeiramente em 2011, sua aplicação inicial era substituir o JavaScript como linguagem principal de desenvolvimento Web. Hoje em dia seu principal uso é através do framework Flutter.
+---
 
-É uma linguagem estaticamente tipada, isto é, após um tipo ser atribuído o mesmo não pode mais ser alterado. Sua estrutura é muito parecida com a do Java.
+## 🚀 Funcionalidades
 
-## Hello World
-Uma ótima maneira de entender a estrutura básica de uma linguagem é conhecendo como fazer o mais básico e conhecido dos códigos, o "Hello World". Sua estrutura em dart é desta maneira:
+As funcionalidades obrigatórias do desafio foram implementadas, incluindo:
 
-    void main() {
-     print('Olá, Mundo!');
-    }
+* **Listagem de Personagens**: Uma lista rolante com cards exibindo a imagem e o nome de cada personagem.
+* **Rolagem Infinita**: A lista carrega mais personagens automaticamente conforme o usuário rola a página para baixo.
+* **Tela de Detalhes**: Ao clicar em um card, o usuário é redirecionado para uma tela que mostra informações detalhadas do personagem.
+* **Navegação**: A navegação entre a tela de listagem e a de detalhes funciona corretamente.
 
-## Comentários
-    // Para adicionar um comentário basta escrevê-lo desta maneira.
-    
-    /*
-    Mas se tiver que falar muita coisa
-    Você pode escrever desta maneira
-    */
-    
-    /// E se quiser documentar uma função ou classe escreva assim.
+---
 
-## Fortemente tipada:
-Dart é fortemente tipada, mas por sua vez não é necessário definir os tipos explicitamente, podendo se utilizar. Por exemplo ao atribuir a variável:
+## 🛠️ Arquitetura e Tecnologias
 
-    var value = 1;
+A solução foi desenvolvida utilizando a linguagem Dart e o framework Flutter. A arquitetura e as bibliotecas escolhidas para a construção do aplicativo são:
 
-value é inferido como sendo um inteiro. Logo atribuir um valor de um tipo diferente na sequência, como um booleano, resultará em um erro.
+* **Arquitetura**: Utilizei o padrão **MVVM (Model-View-ViewModel)**. Essa abordagem me permitiu separar claramente a lógica de negócio (ViewModel) da interface de usuário (View), facilitando a manutenção e a escalabilidade do código.
+* **Gerenciamento de Estado**: Para gerenciar o estado das telas, optei por uma abordagem simples e robusta, utilizando o `StatefulWidget` com um `FutureBuilder` para carregar dados assincronamente e um `ScrollController` para o carregamento infinito.
+* **Comunicação com a API**: A comunicação com a API REST de Rick and Morty (`https://rickandmortyapi.com/`) foi realizada usando a biblioteca **`Dio`**. O `Dio` facilitou a configuração e o tratamento das requisições HTTP de forma eficiente.
+* **Estilização**: Para a tipografia, utilizei a biblioteca **`Google Fonts`** para importar a fonte Lato, mantendo a consistência visual do projeto.
 
-    var value = 1;
-    value = false; //Erro
+---
 
-Se por alguma necessidade for necessário que o tipo seja dinâmico, existe um tipo especial que foge desta regra, o dynamic, que permite fazer essas atribuições. Porém perdem-se todos os benefícios de uma linguagem fortemente tipada e aumenta e muito a chance de alguma atribuição errada passar despercebida.
+## ⚙️ Como Executar
 
-    dynamic value = 1;
-    value = false;
+Para rodar este projeto em sua máquina local, siga os passos abaixo:
 
-## Palavras-chave
+1.  Clone este repositório:
+    ```sh
+    git clone [https://github.com/(seu-usuario)/kode_start_tmdb.git](https://github.com/(seu-usuario)/kode_start_tmdb.git)
+    ```
+2.  Navegue até a pasta do projeto:
+    ```sh
+    cd kode_start_tmdb
+    ```
+3.  Instale as dependências:
+    ```sh
+    flutter pub get
+    ```
+4.  Execute o aplicativo em um emulador, dispositivo físico ou navegador:
+    ```sh
+    flutter run
+    ```
 
-Se você quer que uma variável nunca seja alterada deve-se usar final ou const, em vez de usar var ou somente o tipo. Uma variável definida como final pode ter seu valor definido apenas uma vez, já uma variável const é uma constante de tempo de compilação. (Uma variável const é implicitamente final)
+---
 
-Se a constante estiver em uma classe deve ser marcado como static const, assim a mesma variável será compartilhada por todas as instâncias da classe e também ser acessível sem instanciar a classe.
+## 🎥 Demonstração
 
-    final name = 'Bob';
-    final String nickname = 'Bobby';
+**(Aqui você pode inserir os GIFs ou vídeos do seu projeto, demonstrando as funcionalidades.)**
 
-  
+* **Listagem de Personagens e Rolagem Infinita**
+    <img width="221" height="487" alt="Rolagem Infinita" src="https://github.com/user-attachments/assets/16d5b919-3238-42f7-aa46-b9bd6b1226b5" />
 
-    class DetailsPage {
-     static const routeName = '/details';
-    }
 
-## Tipos de variáveis
-
-### Números:
-
-Dart possui int e double que são subtipos de num;
-
-    int a = 1;
-    double b = 0.1;
-    num c = a + b;
-
-### Booleanos:
-
-    bool a = true;
-    bool b = false;
-
-### Strings:
-
-Strings podem ser atribuidas com aspas simples ou duplas
-
-    String a = 'a';
-    String b = "b";
-
-A interpolação pode ser feita usando um cifrão
-
-    int number = 1;
-    String text = "$number";
-
-No caso de ser uma expressão é necessário adicionar chaves.
-
-    int number = 1;
-    String text = "${number.isEven}";
-
-### Listas:
-
-    var list = [1, 2, 3];
-    var list2 = [...list];
-    
-    var nav = [
-     'Home',
-     'Furniture',
-     'Plants',
-     if (promoActive) 'Outlet',
-     promoActive ? 'Sale' : 'Normal
-    ];
-
-### Mapas/Dicionários:
-
-    var nobleGases = {
-     2: 'helium',
-     10: 'neon',
-     18: 'argon',
-    };
-
-### Generics:
-
-Tipos como listas e mapas possuem possibilidade de utilizar generics para definir os tipos de seus valores internos.
-
-    List<dynamic> myList;
-    Map<dynamic, dynamic> myMap;
-    
-    List<int> myList;
-    Map<String, bool> myMap;
-
-## Propriedades privadas:
-
-Em Dart não existem palavras como public, protected, e private, para definir uma variável, função ou classe como privada e que só possa ser acessada dentro de determinado contexto basta que seu nome comece com um underline (_);
-
-    class _Class {}
-    var _variable;
-    void _function(){}
-
-## Controle de fluxo e repetição
-
-    if (year >= 2001) {
-     print('21st century');
-    } else if (year >= 1901) {
-     print('20th century');
-    }
-    
-    final maior = a > b ? a : b;
-    
-    switch (expression) {
-     case value1:
-     // Code to execute if expression matches value1
-     break;
-     case value2:
-     // Code to execute if expression matches value2
-     break;
-     // ... more cases
-     default:
-     // Code to execute if no case matches
-     break;
-    }
-
-    for (final object in flybyObjects) {
-     print(object);
-    }
-
-    for (int month = 1; month <= 12; month++) {
-     print(month);
-    }
-
-    while (year < 2016) {
-     year += 1;
-    }
-
-  
-
-## Null safety:
-
-Dart recentemente recebeu suporte a null safety, isso significa que é possível definir quais variáveis podem ou não receber null. O que tornou o seu analisador muito mais eficiente não permitindo que uma variável seja utilizada antes de ser definida.
-
-    void main() {
-     int value;
-     value = 0;
-     print(value);
-    }
-
-Dependendo do contexto de declaração de uma variável é necessário utilizar a palavra-chave late. Isto só é necessário em casos que o próprio Dart não consegue detectar previamente que uma variável será definida antes de ser executada.
-
-    late int value;
-
-    void main() {    
-     value = 0;    
-     print(value);    
-    }
-
-E quando esta variável pode ser nula, mas quando iremos utilizá-la, a mesma já terá seu valor definido, podemos usar uma exclamação.
-
-    int? value;
-        
-    void main() {    
-     value = 0;    
-     print(value!.toDouble());    
-    }
-
-E se quisermos que uma variável seja nula? Basta Adicionar uma interrogação junto ao tipo.
-
-    String? value;
-
-Além do null safety, o Dart também possui operadores null-aware.
-
-    main() async {
-     String? value;
-     String? trimmedValue = value?.trim();
-     String secondValue = value ?? '';
-    }
-
-  
-
-## Parâmetros:
-
-Dart dá suporte a parâmetros obrigatórios, opcionais, nomeados e posicionais.
-
-    void enableFlags({required bool bold, bool? hidden}) {...}
-    void enableFlags({required bool bold, bool hidden = false}) {...}
-    enableFlags(bold: true, hidden: false);
-
-    String say(String from, String msg, [String? device]) {
-     var result = '$from says $msg';
-     if (device != null) {
-     result = '$result with a $device';
-     }
-     return result;
-    }
-    
-    assert(say('Bob', 'Howdy') == 'Bob says Howdy');
-    assert(say('Bob', 'Howdy', 'smoke signal') == 'Bob says Howdy with a smoke signal');
-
-## Funções:
-
-Dart possui suporte a funções nomeadas e anônimas, arrow functions, inclusive declaração como variáveis com tipagem de retorno e de parâmetros.
-
-    int sum(int a, int b) {return a + b;}
-    int sum2(int a, int b) => a + b;
-    int Function (int, int) sum3;
-    sum3 = (int a, int b) => a + b;
-
-  
-
-    const list = ['apples', 'bananas', 'oranges'];
-    list.forEach((item) {
-     print('${list.indexOf(item)}: $item');
-    });
-
-  
-
-## Classes:
-
-Possui classes abstratas, uso de implements e extends, além de enums e extensions.
-
-    import 'dart:math';
-
-    class Point {
-     static const double xOrigin = 0;
-     static const double yOrigin = 0;
-     double x;
-     double y;
-     Point(this.x, this.y);
-    
-     // Named constructor
-    
-     Point.origin()
-     : x = xOrigin,
-     y = yOrigin;
-     double distanceToOrigin() {
-     return sqrt(x * x + y * y);
-     }
-    }
-    
-      
-    
-    class Point3d extends Point {
-     static const double zOrigin = 0;
-     double z;
-     Point3d(double x, double y, this.z) : super(x, y);
-     
-     // Named constructor
-     Point3d.origin(): z = zOrigin, super.origin();
-
-     @override
-     double distanceToOrigin() {
-     return sqrt(x * x + y * y + z * z);
-     }
-    }
-
-    main() {
-     var a = Point(1, 2);
-     var b = Point.origin();
-     var c = Point(Point.xOrigin, 2);
-     print(a.distanceToOrigin());
-    }
-
-  
-
-## Enum:
-
-    enum SelectedColor {
-     primaryColor,
-     secondaryColor,
-    }
-    
-    extension SelectedColorExtension on SelectedColor {
-     String get name => describeEnum(this);
-     String get displayTitle {
-     switch (this) {
-     case SelectedColor.PrimaryColor:
-     return 'This is the Primary Color';
-     case SelectedColor.SecondaryColor:
-     return 'This is the Secondary Color';
-     default:
-     return 'SelectedScheme Title is null';
-     }
-     }
-    }
-
-## Async e Await
-
-Utilização para tarefas que devem ser feitas de forma assíncrona.
-
-    main() async {
-     try {
-     var value = await Future.delayed(Duration(seconds: 1));
-     print(value.a);
-     } catch (e) {
-     print(e);
-     }
-    }
-
-    main() {
-    Future.delayed(Duration(seconds: 1))
-     .then(
-     (value) => print(value.a),
-     )
-     .catchError((error)=>print(error));
-    }
-
+* **Detalhes do Personagem**
+    <img width="351" height="765" alt="image" src="https://github.com/user-attachments/assets/efeb886f-93bb-43b0-b5b6-91f679fceebc" />
